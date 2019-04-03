@@ -1,7 +1,7 @@
 .PHONY: version build build_linux docker_login docker_build docker_push_dev docker_push_pro
 .PHONY: rm_stop
 
-_Version = v0.0.1
+_Version = $(shell git tag | tail -n 1)
 _VersionFile = version/version.go
 _VersionCheckFile = version/version.md
 _CommitVersion = $(shell git rev-parse --short=8 HEAD)
@@ -14,6 +14,13 @@ _ImagesPrefix = registry.cn-hangzhou.aliyuncs.com/ybase/
 _ImageVersionName = $(_ImagesPrefix)$(_ImageName):$(_Version)
 
 _version:
+
+ifeq ($(shell git tag | tail -n 1), $(shell cat version/version | head -n 1))
+		@git tag | tee
+		exit "项目版本没有变动"
+endif
+
+	@echo "$(_Version)" > "version/version"
 	@echo "package version" > $(_VersionFile)
 	@echo "const Version = "\"$(_Version)\" >> $(_VersionFile)
 	@echo "const BuildVersion = "\"$(_BuildVersion)\" >> $(_VersionFile)
@@ -45,5 +52,7 @@ b:
 r:
 	@echo "运行"
 	go run main.go
+t:
+	@echo $(shell git tag | tail -n 1)
 
 docker:_docker_build _build_linux

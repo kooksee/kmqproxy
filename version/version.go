@@ -1,4 +1,4 @@
 package version
-const Version = "v1.0.0"
-const BuildVersion = "2019-03-25 13:29:22"
-const CommitVersion = "153ffb32"
+const Version = "v0.0.2"
+const BuildVersion = "2019-04-03 17:11:05"
+const CommitVersion = "dbe50ea5"
