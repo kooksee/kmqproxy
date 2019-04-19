@@ -13,8 +13,7 @@ func main() {
 		cmds.InitFilesCmd,
 		cmds.VersionCmd,
 		cmds.ServerCmd,
+		cmds.AgentCmd,
 	)
-
-	g.MustNotError(g.PrepareBaseCmd(rootCmd, cnst.EnvPrefix,
-		os.ExpandEnv(cnst.CurPath)).Execute())
+	g.MustNotError(g.PrepareBaseCmd(rootCmd, cnst.EnvPrefix, os.ExpandEnv(cnst.CurPath)).Execute())
 }

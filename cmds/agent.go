@@ -4,10 +4,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var InitFilesCmd = &cobra.Command{
-	Use:   "init",
-	Short: "Initialize config",
+var AgentCmd = &cobra.Command{
+	Use:     "agent",
+	Aliases: []string{"ag"},
+	Short:   "node agent",
 	Run: func(cmd *cobra.Command, args []string) {
-
 	},
 }

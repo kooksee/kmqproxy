@@ -1,5 +1,5 @@
 package cnst
 
-const ServiceName = "dbproxy"
-const EnvPrefix = "dbproxy"
+const ServiceName = "kmqproxy"
+const EnvPrefix = "kmqp"
 const CurPath = "$PWD/kdata"
