@@ -3,7 +3,9 @@ package main
 import (
 	"github.com/kooksee/kmqproxy/cmds"
 	"github.com/kooksee/kmqproxy/internal/cnst"
-	"github.com/kooksee/kmqproxy/internal/g"
+
+	"github.com/pubgo/assert"
+	"github.com/pubgo/gocmds"
 	"os"
 )
 
@@ -15,6 +17,6 @@ func main() {
 		cmds.ServerCmd,
 	)
 
-	g.MustNotError(g.PrepareBaseCmd(rootCmd, cnst.EnvPrefix,
+	assert.MustNotError(gocmds.PrepareBaseCmd(rootCmd, cnst.EnvPrefix,
 		os.ExpandEnv(cnst.CurPath)).Execute())
 }
